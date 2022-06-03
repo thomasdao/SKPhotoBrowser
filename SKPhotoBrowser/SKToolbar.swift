@@ -12,6 +12,7 @@ import UIKit
 private let bundle = Bundle(for: SKPhotoBrowser.self)
 
 class SKToolbar: UIToolbar {
+    var editButton: UIBarButtonItem!
     var toolActionButton: UIBarButtonItem!
     fileprivate weak var browser: SKPhotoBrowser?
     
@@ -33,11 +34,18 @@ class SKToolbar: UIToolbar {
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if let view = super.hitTest(point, with: event) {
-            if SKMesurement.screenWidth - point.x < 50 { // FIXME: not good idea
+            if view == editButton || view == toolActionButton {
                 return view
             }
         }
         return nil
+    }
+    
+    func animate(hidden: Bool) {
+        UIView.animate(withDuration: 0.35) {
+            let alpha: CGFloat = hidden ? 0.0 : 1.0
+            self.alpha = alpha
+        }
     }
 }
 
@@ -50,10 +58,12 @@ private extension SKToolbar {
     }
     
     func setupToolbar() {
+        editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: browser, action: #selector(SKPhotoBrowser.editButtonPressed))
         toolActionButton = UIBarButtonItem(barButtonSystemItem: .action, target: browser, action: #selector(SKPhotoBrowser.actionButtonPressed))
         toolActionButton.tintColor = UIColor.white
         
         var items = [UIBarButtonItem]()
+        items.append(editButton)
         items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
         if SKPhotoBrowserOptions.displayAction {
             items.append(toolActionButton)

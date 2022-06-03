@@ -374,6 +374,7 @@ public extension SKPhotoBrowser {
 internal extension SKPhotoBrowser {
     func showButtons() {
         actionView.animate(hidden: false)
+        toolbar.animate(hidden: false)
     }
     
     func pageDisplayedAtIndex(_ index: Int) -> SKZoomingScrollView? {
@@ -518,6 +519,10 @@ internal extension SKPhotoBrowser {
         }
     }
     
+    @objc func editButtonPressed() {
+        delegate?.didClickEditButton?(self, photoIndex: currentPageIndex)
+    }
+    
     func deleteImage() {
         defer {
             reloadData()
@@ -594,6 +599,7 @@ private extension SKPhotoBrowser {
         
         // action view animation
         actionView.animate(hidden: hidden)
+        toolbar.animate(hidden: hidden)
         
         if !hidden && !permanent {
             hideControlsAfterDelay()

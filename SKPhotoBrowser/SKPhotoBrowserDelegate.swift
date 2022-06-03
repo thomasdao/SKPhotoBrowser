@@ -47,6 +47,14 @@ import UIKit
     @objc optional func didDismissActionSheetWithButtonIndex(_ buttonIndex: Int, photoIndex: Int)
     
     /**
+     Tells the delegate that the browser did dismiss the UIActionSheet
+     
+     - Parameter browser: the photo browser
+     - Parameter photoIndex: the index of the current photo
+     */
+    @objc optional func didClickEditButton(_ browser: SKPhotoBrowser, photoIndex: Int)
+    
+    /**
      Tells the delegate that the browser did scroll to index
      
      - Parameter index: the index of the photo where the user had scroll

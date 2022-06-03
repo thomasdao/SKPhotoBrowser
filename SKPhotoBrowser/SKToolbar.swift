@@ -51,7 +51,9 @@ private extension SKToolbar {
     func setupToolbar() {
         editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: browser, action: #selector(SKPhotoBrowser.editButtonPressed))
         toolActionButton = UIBarButtonItem(barButtonSystemItem: .action, target: browser, action: #selector(SKPhotoBrowser.actionButtonPressed))
-        toolActionButton.tintColor = UIColor.white
+        
+        editButton.tintColor = .white
+        toolActionButton.tintColor = .white
         
         var items = [UIBarButtonItem]()
         items.append(editButton)

@@ -32,15 +32,6 @@ class SKToolbar: UIToolbar {
         setupToolbar()
     }
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if let view = super.hitTest(point, with: event) {
-            if view == editButton || view == toolActionButton {
-                return view
-            }
-        }
-        return nil
-    }
-    
     func animate(hidden: Bool) {
         UIView.animate(withDuration: 0.35) {
             let alpha: CGFloat = hidden ? 0.0 : 1.0

@@ -1,7 +1,5 @@
 <h1 align="center">SKPhotoBrowser</h1>
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 <H4 align="center">
 Simple PhotoBrowser/Viewer inspired by facebook, twitter photo browsers written by swift
 </H4>
@@ -178,6 +176,13 @@ That how you can customize close and delete buttons
 SKPhotoBrowserOptions.displayDeleteButton = true                           // delete button will be shown
 SKPhotoBrowserOptions.swapCloseAndDeleteButtons = true                     // now close button located on right side of screen and delete button is on left side
 SKPhotoBrowserOptions.closeAndDeleteButtonPadding = 20                     // set offset from top and from nearest screen edge of close button and delete button
+```
+
+#### Screenshot Protection
+You can protect your image from taking screenshot via SKPhotoBrowserOptions
+Only working on the device, not on simulator
+```swift
+SKPhotoBrowserOptions.protectScreenshot = true                             // image will be hidden after taking screenshot
 ```
 
 #### Custom Cache From Web URL
